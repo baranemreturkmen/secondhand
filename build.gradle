@@ -1,0 +1,63 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.2'
+	id 'io.spring.dependency-management' version '1.0.12.RELEASE'
+	id 'java'
+	id 'org.jetbrains.kotlin.jvm' version "1.5.0"
+	id 'org.jetbrains.kotlin.plugin.allopen' version "1.5.0"
+	id 'org.jetbrains.kotlin.plugin.spring' version "1.5.0"
+}
+
+//old syntax for plugins needed so their versions can be referenced from gradle.properties
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'org.jetbrains.kotlin.jvm'
+apply plugin: 'org.jetbrains.kotlin.plugin.spring'
+
+group = 'com.javaet.secondhand'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+	maven{url "https://repo.spring.io/libs-snapshot"}
+}
+
+dependencies {
+	//internal modules
+	implementation project(':user')
+
+	//external libraries
+	implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
+	implementation 'org.jetbrains.kotlin:kotlin-reflect'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'junit:junit:4.12'
+	testImplementation 'io.rest-assured:rest-assured:3.2.0'
+}
+
+compileKotlin{
+	kotlinOptions.jvmTarget="1.8"
+}
+
+compileTestKotlin{
+	kotlinOptions.jvmTarget="1.8"
+}
+
+jar{
+	baseName 'secondhand'
+}
+
+subprojects{
+	apply plugin: 'java'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+	apply plugin: 'org.jetbrains.kotlin.jvm'
+	apply plugin: 'org.jetbrains.kotlin.plugin.spring'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
