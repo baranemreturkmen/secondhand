@@ -63,8 +63,9 @@ public class UserController {
     * */
 
     /*
-    * Mikroservis - sqrs ?????
-    * */
+    * CQRS, ana odağı write (yazma) ve read (okuma) sorumluluklarının ayrıştırılmasına dayanan
+    * bir mimari tasarım modelidir.
+     * */
 
     /*
     * Post -> 201
