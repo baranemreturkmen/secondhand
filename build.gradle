@@ -32,8 +32,11 @@ dependencies {
 	implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'
 	implementation 'org.jetbrains.kotlin:kotlin-reflect'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.data:spring-data-jpa'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	//implementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+	//implementation 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
 	testImplementation 'junit:junit:4.12'
 	testImplementation 'io.rest-assured:rest-assured:3.2.0'
 }

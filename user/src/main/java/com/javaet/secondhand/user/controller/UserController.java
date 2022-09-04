@@ -39,10 +39,16 @@ public class UserController {
     public ResponseEntity<UserDto> updateUser(@PathVariable("mail") String mail,@RequestBody UpdateUserRequest updateUserRequest){
         return ResponseEntity.ok(userService.updateUser(mail,updateUserRequest));
     }
-/*
+
     @PatchMapping("/{id}")
-    public ResponseEntity<Void> deactiveUser(@PathVariable("id") Long id){
-        userService.deactiveUser(id);
+    public ResponseEntity<Void> deactivateUser(@PathVariable("id") Long id){
+        userService.deactivateUser(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Void> activeUser(@PathVariable("id") Long id){
+        userService.activeUser(id);
         return ResponseEntity.ok().build();
     }
 
@@ -51,7 +57,7 @@ public class UserController {
         userService.deleteUser(id);
         return ResponseEntity.ok().build();
     }
-*/
+
 
     /*Bean anatasyonu nesneyi application context'e atıp singleton bir şekilde yaratıp
     * her yerde aynı instance üzerinden kullanmanı sağlıyor.
