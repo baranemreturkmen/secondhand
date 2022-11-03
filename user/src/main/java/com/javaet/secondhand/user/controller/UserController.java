@@ -47,8 +47,8 @@ public class UserController {
     }
 
     @PatchMapping("/activateUser/{id}")
-    public ResponseEntity<Void> activeUser(@PathVariable("id") Long id){
-        userService.activeUser(id);
+    public ResponseEntity<Void> activateUser(@PathVariable("id") Long id){
+        userService.activateUser(id);
         return ResponseEntity.ok().build();
     }
 

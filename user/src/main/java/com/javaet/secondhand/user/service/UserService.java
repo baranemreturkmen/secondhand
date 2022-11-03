@@ -60,7 +60,9 @@ public class UserService {
     * */
     public UserDto createUser(CreateUserRequest createUserRequest) {
         UserInformation userInformation = new UserInformation(createUserRequest.getMail(),createUserRequest.getFirstName()
-                ,createUserRequest.getLastName(),createUserRequest.getMiddleName(),true);
+                ,createUserRequest.getLastName(),createUserRequest.getMiddleName(),false);
+
+        //false verelim isActive parametresini active veya deactiveUser metodlarım zaten var.
 
         return userDtoConverter.convert(userInformationRepository.save(userInformation));
     }
@@ -73,7 +75,7 @@ public class UserService {
         }
         //Model nesnesi
         UserInformation updatedUserInformation = new UserInformation(userInformation.getId(),userInformation.getMail(),updateUserRequest.getFirstName(), updateUserRequest.getLastName(),
-                updateUserRequest.getMiddleName());
+                updateUserRequest.getMiddleName(),userInformation.getActive());
 
         return userDtoConverter.convert(userInformationRepository.save(updatedUserInformation));
     }
@@ -82,7 +84,7 @@ public class UserService {
         changeActivateUser(id,false);
     }
 
-    public void activeUser(Long id) {
+    public void activateUser(Long id) {
         changeActivateUser(id,true);
     }
 
